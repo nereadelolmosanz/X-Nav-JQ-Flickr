@@ -1,10 +1,8 @@
 jQuery(document).ready(function(){
   $("#getJSONP").click(function(){
     console.log("click");
-    //Cargamos el script en el DOM
-    //$('head').after('<script src="' + src + '" type="text/javascript"></script>');
-    var src = "http://api.flickr.com/services/feeds/photos_public.gne?tags=fuenlabrada&tagmode=any&format=json&jsoncallback=?";
 
+    var src = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
     $.getJSON(src,{
       tags: "fuenlabrada",
       tagmode: "any",
@@ -17,7 +15,7 @@ jQuery(document).ready(function(){
         picList += "<p><img src='" + data.items[i].media.m + "'></p></li>";
       }
       picList += "</ul>";
-      $('#photos').after(picList);
+      $('#photos').html(picList);
     });
   });
 });
