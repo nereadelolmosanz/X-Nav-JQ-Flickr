@@ -2,12 +2,8 @@ jQuery(document).ready(function(){
   $("#getJSONP").click(function(){
     console.log("click");
 
-    var src = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
-    $.getJSON(src,{
-      tags: "fuenlabrada",
-      tagmode: "any",
-      format: "json"
-    }).done(function(data){
+    var src = "http://api.flickr.com/services/feeds/photos_public.gne?tags=fuenlabrada&tagmode=any&format=json&jsoncallback=?";
+    $.getJSON(src,function(data){
       console.log("get jsonp");
       var picList = "<ul>";
       for (var i=0; i<data.items.length; i++){
